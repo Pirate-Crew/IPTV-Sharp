@@ -1,4 +1,4 @@
-# IPTV#
+# IPTV Sharp
 Windows GUI version of iptv tool
 
 ## Disclaimer
