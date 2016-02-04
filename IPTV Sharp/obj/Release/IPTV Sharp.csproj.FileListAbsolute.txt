@@ -1,0 +1,12 @@
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\IPTV Sharp.exe.config
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\IPTV Sharp.exe
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\IPTV Sharp.pdb
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\HtmlAgilityPack.dll
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\HtmlAgilityPack.pdb
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\bin\Release\HtmlAgilityPack.xml
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV_Sharp.Form1.resources
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV_Sharp.Properties.Resources.resources
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV Sharp.csproj.GenerateResource.Cache
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV Sharp.exe
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV Sharp.pdb
+C:\Users\Marco\documents\visual studio 2015\Projects\IPTV Sharp\IPTV Sharp\obj\Release\IPTV Sharp.csprojResolveAssemblyReference.cache
