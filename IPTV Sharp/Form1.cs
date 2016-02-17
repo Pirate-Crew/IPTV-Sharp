@@ -89,10 +89,11 @@ namespace IPTV_Sharp
                 {
                     try
                     {
+                        string server = comboBox1.Text;
                         string page = client.DownloadString(server);
                         if (page != "" && page.Contains("Xtream Codes"))
                         {
-                            string server = comboBox1.Text;
+                            
                             label3.Text = "Attack in progress, check output directory for cracked channel";
                             label3.Visible = true;
                             label1.Enabled = false;
