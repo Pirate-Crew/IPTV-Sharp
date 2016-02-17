@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -46,28 +45,8 @@ namespace IPTV_Sharp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            string url = "https://duckduckgo.com/html/?q=Xtream+Codes+v1.0.59.5&kl=it-it";
-            var servers = new List<string>();
-
-            HtmlWeb crawler = new HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = crawler.Load(url);
-
-            foreach (HtmlNode link in doc.DocumentNode.SelectNodes("//a[@href]"))
-            {
-                HtmlAttribute att = link.Attributes["href"];
-
-                if (att.Value.Contains("http://"))
-                {
-                    string[] temp = att.Value.Split('/');
-                    string tempx = temp[0] + "//" + temp[2];
-                    if (!servers.Any(tempx.Contains) && temp[2].Contains(":"))
-                    {
-                        servers.Add(tempx);
-                        comboBox1.Items.Add(tempx);
-                    }
-                }
-            }     
+            SearchHelper s = new SearchHelper();      
+            comboBox1.DataSource = s.DoSearch("Xtream+Codes+v1.0.59.5&kl=it-it");
 
             label3.Visible = false;
             label1.Visible = true;
