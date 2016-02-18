@@ -13,6 +13,8 @@ namespace IPTV_Sharp
         private XtreamCrawler crawler;
         private BackgroundWorker crawler_worker;
 
+        public int num_found;
+
         public Form1()
         {
             InitializeComponent();
@@ -42,6 +44,8 @@ namespace IPTV_Sharp
             {
                 StatusBoxWrite("No dictionary entries loaded. Not Ready.");
             }
+
+            num_found = 0;
             
         }
 
@@ -72,6 +76,12 @@ namespace IPTV_Sharp
         private void timer1_Tick(object sender, EventArgs e)
         {
             progressBar1.Value = crawler.progress;
+
+            if (num_found < crawler.num_results)
+            {
+                num_found = crawler.num_results;
+                StatusBoxWrite("Found " + num_found + " channels so far.");
+            }
 
             switch (crawler.status)
             {

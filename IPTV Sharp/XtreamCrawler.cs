@@ -29,7 +29,7 @@ namespace IPTV_Sharp
 
         public int progress;
         public CrawlerStatus status;
-        
+        public int num_results=0;
                       
         public XtreamCrawler(DictionaryManager dictionary, string server, int concurrent_tasks)
         {
@@ -53,7 +53,7 @@ namespace IPTV_Sharp
             string output_result = string.Empty;
             bool found_result = false;
             progress = 0;
-
+            num_results = 0;
             try
             {
                 string page = await client.GetStringAsync(server);
@@ -89,30 +89,27 @@ namespace IPTV_Sharp
                             {
                                 output_result = crawl_task.Result;
                                 found_result = true;
-                                break;
+                                num_results++;
+                                if (!Directory.Exists("output")) Directory.CreateDirectory("output");
+                                string output = "output/tv_channels_" + num_results + ".m3u";
+                                StreamWriter outputFile = new StreamWriter(output, true);
+                                outputFile.WriteLine(output_result);
+                                outputFile.Flush();
+                                outputFile.Close();
+                                outputFile.Dispose();
+
                             }
                         }
-
-                        if (found_result) break;
 
                         progress += increment;
                     }
                     
                     if(found_result)
                     {
-                        if (!Directory.Exists("output")) Directory.CreateDirectory("output");
-                        string output = "output/tv_channels_" + output_result + ".m3u";
-                        StreamWriter outputFile = new StreamWriter(output, true);
-                        outputFile.WriteLine(page);
-                        outputFile.Flush();
-                        outputFile.Close();
-                        outputFile.Dispose();
-                        progress = dictionary.entries.Count;
                         status = CrawlerStatus.CompletedWithResults;    
                     }
                     else
                     {
-                        progress = dictionary.entries.Count;
                         status = CrawlerStatus.CompletedWithoutResults;
                     }
                 }
