@@ -5,7 +5,7 @@ Windows GUI version of iptv tool
 This program is just a demo. DO NOT USE IT FOR PERSONAL purpose
 
 ## Usage
- Download a release from: [here](https://github.com/Pirate-Crew/IPTV-Sharp/releases/download/IPTV%23/iptv-1.0.0.rar)<br>
+ Download a release from: [here](https://github.com/Pirate-Crew/IPTV-Sharp/releases/download/1.1.0/IPTV-Sharp-1.1.zip)<br>
  Extract it somewhere<br>
  Open IPTV Sharp.exe <br>
  Select a server from target selector<br>
