@@ -37,6 +37,8 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.force_checkbox = new System.Windows.Forms.CheckBox();
+            this.uppercase_check = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -74,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(273, 252);
+            this.label2.Location = new System.Drawing.Point(272, 330);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(184, 13);
@@ -83,10 +85,10 @@
             // 
             // statusBox
             // 
-            this.statusBox.Location = new System.Drawing.Point(13, 65);
+            this.statusBox.Location = new System.Drawing.Point(12, 94);
             this.statusBox.Name = "statusBox";
             this.statusBox.ReadOnly = true;
-            this.statusBox.Size = new System.Drawing.Size(443, 184);
+            this.statusBox.Size = new System.Drawing.Size(443, 233);
             this.statusBox.TabIndex = 5;
             this.statusBox.Text = "";
             // 
@@ -111,11 +113,33 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // force_checkbox
+            // 
+            this.force_checkbox.AutoSize = true;
+            this.force_checkbox.Location = new System.Drawing.Point(14, 71);
+            this.force_checkbox.Name = "force_checkbox";
+            this.force_checkbox.Size = new System.Drawing.Size(82, 17);
+            this.force_checkbox.TabIndex = 8;
+            this.force_checkbox.Text = "Force Crawl";
+            this.force_checkbox.UseVisualStyleBackColor = true;
+            // 
+            // uppercase_check
+            // 
+            this.uppercase_check.AutoSize = true;
+            this.uppercase_check.Location = new System.Drawing.Point(115, 71);
+            this.uppercase_check.Name = "uppercase_check";
+            this.uppercase_check.Size = new System.Drawing.Size(148, 17);
+            this.uppercase_check.TabIndex = 9;
+            this.uppercase_check.Text = "Try Uppercase First Letter";
+            this.uppercase_check.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 273);
+            this.ClientSize = new System.Drawing.Size(468, 352);
+            this.Controls.Add(this.uppercase_check);
+            this.Controls.Add(this.force_checkbox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.statusBox);
@@ -145,6 +169,8 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox force_checkbox;
+        private System.Windows.Forms.CheckBox uppercase_check;
     }
 }
 
