@@ -5,7 +5,7 @@ Windows GUI version of iptv tool
 This program is just a demo. DO NOT USE IT FOR PERSONAL purpose
 
 ## Usage
- Requires .NET Framework 4.5.2
+ Requires .NET Framework 4.5.2<br>
  Download a release from: [here](https://github.com/Pirate-Crew/IPTV-Sharp/releases/download/1.2/IPTV-Sharp-1.2.zip)<br>
  Extract it somewhere<br>
  Open IPTV Sharp.exe <br>
