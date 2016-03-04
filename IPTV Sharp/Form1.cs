@@ -30,7 +30,7 @@ namespace IPTV_Sharp
             List<string> results = searcher.DoSearch("Xtream+Codes+v1.0.59.5&kl=it-it");
             comboBox1.DataSource = results;
             StatusBoxWrite("Done. Showing" + results.Count + " Results." + Environment.NewLine);
-
+            
             StatusBoxWrite("Loading word dictionary...");
             dictionary = new DictionaryManager("part_list");
             dictionary.LoadDictionaries();
@@ -45,6 +45,9 @@ namespace IPTV_Sharp
                 StatusBoxWrite("No dictionary entries loaded. Not Ready.");
             }
 
+            StatusBoxWrite("\"Force Crawl\" disables site validity check.");
+            StatusBoxWrite("\"Try Uppercase First Letter\" changes the first letter of your dictionary entries to uppercase when sending requests. (Example: mario -> Mario)");
+            StatusBoxWrite("Only for demo purposes. Be warned as crawl time may increase drastically depending on target site and dictionary size.");
             num_found = 0;
             
         }
@@ -60,7 +63,12 @@ namespace IPTV_Sharp
                 string server = comboBox1.Text;
                 StatusBoxWrite("Initiating Attack. Check Progress Bar.");
 
-                crawler = new XtreamCrawler(dictionary, server, 20);
+                if (force_checkbox.Checked)
+                {
+                    StatusBoxWrite("Force Crawl selected. Bypassing site validity check.");
+                }
+
+                crawler = new XtreamCrawler(dictionary, server, 10, force_checkbox.Checked, uppercase_check.Checked);
                 crawler_worker = new BackgroundWorker();
                 crawler_worker.DoWork += new DoWorkEventHandler(crawler.DoCrawl);
                 crawler_worker.RunWorkerAsync();
@@ -92,7 +100,7 @@ namespace IPTV_Sharp
                     break;
 
                 case CrawlerStatus.InvalidSite:
-                    StatusBoxWrite("Target is not an IPTV site.");
+                    StatusBoxWrite("Target is not an IPTV site or something went wrong. Try forcing crawling anyway by selecting \"Force Crawl\"");
                     timer1.Stop();
                     button1.Enabled = true;
                     break;
